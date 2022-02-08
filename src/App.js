@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Form from "./components/Form/Form.jsx";
+import Section from "./components/Section/Section";
+import Contacts from "./components/Contacts/Contacts.jsx";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello world!
-        </a>
-      </header>
-    </div>
-  );
+import { nanoid } from "nanoid";
+
+import "./App.css";
+
+class App extends Component {
+  state = {
+    contacts: [],
+    filter: "",
+  };
+
+  // formSubbitHandler = (data) => {
+  //   console.log(data);
+  //   this.setState({ contacts: [data] });
+  // };
+  nameContactId = nanoid();
+
+  addContacts = (data) => {
+    // const contact = {
+    //   data,
+    // };
+    this.setState((prevState) => ({ contacts: [data, ...prevState.contacts] }));
+    console.log(this.state.contacts);
+  };
+
+  render() {
+    return (
+      <>
+        <Section title="Phonebook">
+          {/* <Form onSubmit={this.formSubbitHandler} /> */}
+          <Form onSubmit={this.addContacts} />
+        </Section>
+
+        <Contacts contacts={this.state.contacts} id={this.nameContactId} />
+      </>
+    );
+  }
 }
 
 export default App;
