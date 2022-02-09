@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import s from "./Contacts.module.css";
 
 function Contacts({ contacts, onDeleteContatc }) {
@@ -20,5 +21,9 @@ function Contacts({ contacts, onDeleteContatc }) {
     </ul>
   );
 }
+
+Contacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+};
 
 export default Contacts;

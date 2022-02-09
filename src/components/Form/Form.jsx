@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import { nanoid } from "nanoid";
 
@@ -72,5 +73,10 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  number: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default Form;
